@@ -1,0 +1,219 @@
+//lab-3-exercise-1
+
+package lab3;
+import java.lang.*;
+import java.util.*;
+public class TokenDemo {
+	public static void main(String[] args)
+	{
+		String s="10,20,30,40,50";
+		int sum=0;
+		StringTokenizer a=new StringTokenizer(s,",",false);
+		System.out.println("integers are");
+		while(a.hasMoreTokens())
+		{
+			int b=Integer.parseInt(a.nextToken());
+			sum=sum+b;
+			System.out.println(" "+b);
+		}
+		System.out.println("sum of integers is "+sum);
+		}
+	}
+
+//exercise-2
+
+package lab3;
+import java.util.*;
+public class MirrorImageOfString {
+public String getImage(String str)
+{
+	StringBuffer sbr=new StringBuffer(str);
+	sbr.append('|');
+	StringBuffer sb=new StringBuffer(str);
+	sb.reverse();
+	sbr.append(sb);
+	return sbr.toString();
+	
+}
+public static void main(String[] args)
+{
+	MirrorImageOfString m=new MirrorImageOfString();
+	Scanner sc=new Scanner(System.in);
+	System.out.println("Enter a string");
+	String str=sc.next();
+	System.out.println(m.getImage(str));
+}
+
+}
+//exercise-3
+
+package lab3;
+public class Exercise3 {
+// Function to check if a character is
+			// vowel or not
+			static boolean isVowel(char ch)
+			{
+				if (ch != 'a' && ch != 'e' && ch != 'i' && ch != 'o'
+					&& ch != 'u') {
+					return false;
+				}
+				return true;
+			}
+
+			// Function that replaces consonant with
+			// next immediate consonant alphabetically
+			static String replaceConsonants(char[] s)
+			{
+				// Start traversing the string
+				for (int i = 0; i < s.length; i++) {
+					if (!isVowel(s[i])) {
+
+						// if character is z,
+						// than replace it with character b
+						if (s[i] == 'z') {
+							s[i] = 'b';
+						}
+
+						// if the alphabet is not z
+						else {
+
+							// replace the element with
+							// next immediate alphabet
+							s[i] = (char)(s[i] + 1);
+
+							// if next immediate alphabet is vowel,
+							// than take next 2nd immediate alphabet
+							// (since no two vowels occurs
+							// consecutively in alphabets) hence no
+							// further checking is required
+							if (isVowel(s[i])) {
+								s[i] = (char)(s[i] + 1);
+							}
+						}
+					}
+				}
+				
+					return String.valueOf(s);
+					
+				}
+				public static void main(String[] args)
+				{
+					String s="geeksforgeeks";
+					System.out.println(replaceConsonants(s.toCharArray()));
+				}
+}
+
+//exrecise-5
+
+package lab3;
+import java.io.*;
+public	class Exercise5
+{   
+			 // Java program to count the
+			// number of lines, words, sentences,
+			// characters, and whitespaces in a file
+			
+				public static void main(String[] args)
+					throws IOException
+				{
+					File file = new File();
+					FileInputStream fileInputStream = new FileInputStream(file);
+					InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+					BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+					String line;
+					int wordCount = 0;
+					int characterCount = 0;
+					int paraCount = 0;
+					int whiteSpaceCount = 0;
+					int sentenceCount = 0;
+
+					while ((line = bufferedReader.readLine()) != null) {
+						if (line.equals("")) {
+							paraCount += 1;
+						}
+						else {
+							characterCount += line.length();
+							String words[] = line.split("\\s+");
+							wordCount += words.length;
+							whiteSpaceCount += wordCount - 1;
+							String sentence[] = line.split("[!?.:]+");
+							sentenceCount += sentence.length;
+						}
+					}
+					if (sentenceCount >= 1) {
+						paraCount++;
+					}
+					System.out.println("Total word count = "+ wordCount);
+					System.out.println("Total number of sentences = "+ sentenceCount);
+					System.out.println("Total number of characters = "+ characterCount);
+					System.out.println("Number of paragraphs = "+ paraCount);
+					System.out.println("Total number of whitespaces = "+ whiteSpaceCount);
+				}
+			}
+
+//exercise-8
+
+package lab3;
+public class Exercise8{
+			// Function that checks whether
+		    // the string is in alphabetical
+		    // order or not
+		    static boolean isAlphabaticOrder(String s)
+		    {
+		        // length of the string
+		        int n = s.length();
+		       
+		        // create a character array
+		        // of the length of the string
+		        char c[] = new char [n];
+		       
+		        // assign the string
+		        // to character array
+		        for (int i = 0; i < n; i++) {
+		            c[i] = s.charAt(i);
+		        }
+		       
+		        // sort the character array
+		        
+		       
+		        // check if the character array
+		        // is equal to the string or not
+		        for (int i = 0; i < n; i++)
+		            if (c[i] != s.charAt(i)) 
+		                return false;
+		               return true;
+		    }
+
+			public static void main(String[] args) {
+				// TODO Auto-generated method stub
+				String s = "Amulya";
+		        
+		        // check whether the string is
+		        // in alphabetical order or not
+		        if (isAlphabaticOrder(s))
+		           System.out.println("Yes");
+		        else
+		            System.out.println("No");
+
+			}
+}
+//exercise-9
+
+package lab3;
+import java.util.*;
+import java.time.*;
+
+
+public class DaysMonthsYears {
+	public static void main(String[] args)
+	{
+		LocalDate pdate=LocalDate.of(2012, 05,23);
+		LocalDate now=LocalDate.now();
+		
+		Period diff=Period.between(pdate,now);
+		System.out.printf("\n difference is %d years,%d months and %d days old\n\n",diff.getYears(),diff.getMonths(),diff.getDays());
+		
+	}
+		}
+

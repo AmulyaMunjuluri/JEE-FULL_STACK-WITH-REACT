@@ -1,0 +1,253 @@
+//lab1-exercise1
+
+import java.util.Scanner;
+public class SumOfCubes {
+	
+
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("input:");
+		int num=sc.nextInt();
+		int sum=0;
+		//iterations are happen until number is equals 0
+		while(num>0)
+		{
+		   int mod=num % 10;
+			sum=sum+(int)Math.pow(mod, 3);
+			num=num/10;
+		}
+		
+		
+		System.out.println("output:sum of digits cubes="+sum);
+		
+	}
+}
+
+//exercise-2
+
+import java.util.Scanner;
+public class TrafficLights {
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter:\n1 Red \n2 Yellow \n3 Green");
+		
+		int n=sc.nextInt();
+		String message="";
+		
+		switch(n)
+		{
+		case 1:
+			message ="stop";
+			break;
+		case 2:
+			message ="ready";
+			break;
+		case 3:
+			message ="Go";
+			break;
+		default:
+			message ="invalid input!";
+		}
+		System.out.println(message);
+
+		}
+	}
+
+//exercise-3
+
+import java.util.Scanner;
+
+public class Fibbonacci {
+	public static void main(String[] args)
+	{
+		//using scanner class
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Enter the number:");
+		int num=sc.nextInt();
+		for(int i=1;i<=num;i++)
+		{
+			System.out.println(printFibbonacci(i) + " ");
+		}
+		}
+	private static int printFibbonacci(int CurrentNumber)
+	{
+		if(CurrentNumber==1 || CurrentNumber==2)
+		{
+			return 1;
+			
+		}
+		return printFibbonacci(CurrentNumber-1)+printFibbonacci(CurrentNumber-2);
+	}
+
+}
+
+//exercise-4
+
+import java.util.Scanner;
+public class PrimeNumber
+{
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter start value :");
+		int start=sc.nextInt();
+		System.out.println("Enter end value :");
+		int end=sc.nextInt();
+		prime(start,end);
+		
+	}
+	public static void prime(int start,int end)
+	{
+		int i;
+		int count=0;
+		while(start<=end)
+		{
+			for(i=2;i<=start;i++)
+			{
+				if(start%i==0)
+				{
+					break;
+				}
+			}
+		if(i==start)
+		{
+			System.out.println(i);
+			count++;
+		}
+		}
+		}
+	
+	}
+
+//exrecise-5
+
+import java.util.Scanner;
+public class DivisibleBy3_5 {
+	public static int sum(int n)
+	{
+		int s=0;
+		for(int i=1;i<=n;i++)
+			if(i%3==0||i%5==0)
+			{
+				s=s+i;
+				
+			}
+		return s;
+		
+	}
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("enter the number");
+		int t=sc.nextInt();
+		System.out.println(sum(t));
+	}
+
+}
+
+//exrecise-6
+
+public class SumOfSquares {
+	static int Square_Diff(int n){
+		 
+		int l, k, m;
+		    // Sum of the squares of the
+		    // first n natural numbers is
+		    l = (n * (n + 1) * (2 * n + 1)) / 6;
+		     
+		    // Sum of n naturals numbers
+		    k = (n * (n + 1)) / 2;
+		 
+		    // Square of k
+		    k = k * k;
+		     
+		    // Differences between l and k
+		    m = Math.abs(l - k);
+		     
+		    return m;
+		 
+		}
+		 
+		// Driver Code
+		public static void main(String s[])
+		{
+		    int n = 15;
+		    System.out.println(Square_Diff(n));    
+		}
+	}
+
+//exercise-7
+
+import java.util.Scanner;
+public class IncreasingNumber {
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter a number:");
+		int num=sc.nextInt();
+		boolean b=false;
+		int number=num%10;
+		num=num/10;
+		while(num>0)
+		{
+			if(number<=num%10)
+			{
+				b=true;
+				break;
+				
+			}
+			number=num%10;
+			num=num/10;
+			
+		}
+		if(b)
+		{
+			System.out.println("digits are not in increasing order");
+		}
+		else
+		{
+			System.out.println("digits are in increasing order");
+		}
+	}
+
+}
+
+//exercise-8
+
+import java.util.Scanner;
+public class Power {
+public static void main(String[] args)
+{
+	Scanner sc=new Scanner(System.in);
+	System.out.println("Enter a number");
+	int num=sc.nextInt();
+	
+	if(checkNumber(num))
+	{
+		System.out.println(num + " is a power of 2");
+	}
+	else
+	{
+		System.out.println(num + " is not a power of 2");
+		
+	}
+
+}
+	public boolean checkNumber(int num)
+	{
+		while(num%2==0)
+		{
+			num=num/2;
+			return false;
+			
+		}
+		if(num==1)
+		{
+			return true;
+		}
+	
+	}
+}
